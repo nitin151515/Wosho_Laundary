@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-spa"></i>
+                <span>WOSHO</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Price</a>
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+                
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Login</a>
+                    <a href="#" class="btn btn-signup">Sign Up</a>
+                </div>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+
+<script>
+     // Mobile menu toggle
+ const mobileMenu = document.getElementById('mobile-menu');
+ const navLinks = document.querySelector('.nav-links');
+ 
+ mobileMenu.addEventListener('click', () => {
+     mobileMenu.classList.toggle('active');
+     navLinks.classList.toggle('active');
+     
+     // Animate hamburger to X
+     const spans = mobileMenu.querySelectorAll('span');
+     if(mobileMenu.classList.contains('active')) {
+         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+         spans[1].style.opacity = '0';
+         spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+     } else {
+         spans[0].style.transform = 'rotate(0) translate(0)';
+         spans[1].style.opacity = '1';
+         spans[2].style.transform = 'rotate(0) translate(0)';
+     }
+ });
+ 
+ // Close menu when clicking on a link
+ document.querySelectorAll('.nav-links a').forEach(link => {
+     link.addEventListener('click', () => {
+         navLinks.classList.remove('active');
+         mobileMenu.classList.remove('active');
+         
+         // Reset hamburger animation
+         const spans = mobileMenu.querySelectorAll('span');
+         spans[0].style.transform = 'rotate(0) translate(0)';
+         spans[1].style.opacity = '1';
+         spans[2].style.transform = 'rotate(0) translate(0)';
+     });
+ });
+</script>
+</body>
+</html>

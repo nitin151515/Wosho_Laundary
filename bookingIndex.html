@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOSHO Premium Laundry Service</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bookinStyle.css">
+</head>
+<body>
+  <div class="container">
+    <div class="booking-header">
+      <h1>WOSHO Premium Laundry</h1>
+      <p>Experience effortless laundry service with our premium care and convenient scheduling</p>
+    </div>
+
+    <div class="booking-steps">
+      <div class="step active" id="step1-indicator">
+        <div class="step-number">1</div>
+        <div class="step-title">Select Service</div>
+        <div class="step-connector active"></div>
+      </div>
+      <div class="step" id="step2-indicator">
+        <div class="step-number">2</div>
+        <div class="step-title">Delivery Address</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step" id="step3-indicator">
+        <div class="step-number">3</div>
+        <div class="step-title">Payment</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step" id="step4-indicator">
+        <div class="step-number">4</div>
+        <div class="step-title">Confirmation</div>
+      </div>
+    </div>
+
+    <!-- Service Selection Section -->
+    <div class="content-section active" id="service-section">
+      <div class="calculator-container">
+        <div class="calculator-form">
+          <div class="calculator-header">
+            <h2><i class="fas fa-calculator"></i> Service Calculator</h2>
+            <p>Select your items to calculate your total service cost</p>
+          </div>
+          
+          <img src="/Images/checkout.avif" alt="Laundry Service" class="service-image">
+          
+          <div class="selection-area">
+            <div class="selection-group">
+              <label for="service-type"><i class="fas fa-concierge-bell"></i> Service Type</label>
+              <select id="service-type" aria-label="Service Type">
+                <option value="Wash and Iron">Wash & Iron (Basic Laundry)</option>
+                <option value="Dry Cleaning">Dry Cleaning (Premium Fabrics)</option>
+                <option value="Ironing">Ironing Only (Press & Finish)</option>
+                <option value="Shoe Cleaning">Shoe Cleaning</option>
+                <option value="Heavy-Items">Heavy Items (Carpets, Curtains, Bedsheets, Blankets) & Bag Cleaning 
+                </option>
+                <option value="On-Demand-Service">Wash-at-Home Service (On-Demand Laundry Helper)</option>
+              </select>
+            </div>
+            
+            <div class="selection-group">
+              <label for="category"><i class="fas fa-tags"></i> Category</label>
+              <select id="category" disabled aria-label="Category">
+                <option value="">Select service first</option>
+              </select>
+            </div>
+            
+            <div class="selection-group">
+              <label for="item"><i class="fas fa-tshirt"></i> Item</label>
+              <select id="item" disabled aria-label="Item">
+                <option value="">Select category first</option>
+              </select>
+            </div>
+            
+            <div class="selection-group">
+              <label for="quantity"><i class="fas fa-cubes"></i> Quantity</label>
+              <input type="number" id="quantity" min="1" value="1" disabled aria-label="Quantity">
+            </div>
+          </div>
+          
+          <button id="add-item" class="add-item-btn" disabled>
+            <i class="fas fa-plus-circle"></i> Add Item
+          </button>
+        </div>
+        
+        <div class="billing-section">
+          <div class="calculator-header">
+            <h2><i class="fas fa-receipt"></i> Order Summary</h2>
+            <p>Review your selected items and total cost</p>
+          </div>
+          
+          <div class="selected-items">
+            <h3><i class="fas fa-list-ul"></i> Selected Items</h3>
+            <table id="items-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Service</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="items-list">
+                <tr>
+                  <td colspan="6" class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <p>No items selected yet</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="coupon-section">
+              <h4><i class="fas fa-tag"></i> Apply Coupon</h4>
+              <div class="coupon-input">
+                <input type="text" id="coupon-code" placeholder="Enter coupon code" aria-label="Coupon code">
+                <button id="apply-coupon">Apply</button>
+              </div>
+              <div id="coupon-message" class="coupon-message"></div>
+            </div>
+            
+            <div class="billing-details">
+              <div class="billing-row">
+                <span>Subtotal:</span>
+                <span class="billing-amount">$<span id="subtotal">0.00</span></span>
+              </div>
+              <div class="billing-row">
+                <span>Discount:</span>
+                <span class="billing-amount">-$<span id="discount">0.00</span></span>
+              </div>
+              <div class="billing-row total">
+                <span>Total:</span>
+                <span class="total-amount">$<span id="total">0.00</span></span>
+              </div>
+            </div>
+          </div>
+          
+          <button id="proceed-to-address" class="nav-btn" disabled>
+            <i class="fas fa-map-marker-alt"></i> Proceed to Delivery Address
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address Section -->
+    <div class="content-section" id="address-section">
+      <div class="address-container">
+        <div class="address-form">
+          <div class="calculator-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Delivery Address</h2>
+            <p>Enter your address for laundry pickup and delivery</p>
+          </div>
+          
+          <div class="selection-group">
+            <label><i class="fas fa-search-location"></i> Search Address</label>
+            <input type="text" id="autocomplete" class="map-search" placeholder="Start typing your address...">
+          </div>
+          
+          <div class="map-container">
+            <div id="map"></div>
+          </div>
+          
+          <div class="address-fields">
+            <div class="selection-group">
+              <label><i class="fas fa-home"></i> Apartment/Floor</label>
+              <input type="text" id="apartment" placeholder="E.g.: Tower 2, Floor 5">
+            </div>
+            
+            <div class="selection-group">
+              <label><i class="fas fa-phone"></i> Contact Number</label>
+              <input type="tel" id="phone" placeholder="+1 234 567 890" 
+                     pattern="[+]?[\d\s-]{8,}" 
+                     title="Please enter at least 8 digits" required>
+            </div>
+          </div>
+          
+          <div class="nav-buttons">
+            <button class="nav-btn secondary" onclick="backToService()">
+              <i class="fas fa-arrow-left"></i> Back to Services
+            </button>
+            <button class="nav-btn" onclick="proceedToPayment()">
+              <i class="fas fa-credit-card"></i> Proceed to Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="content-section" id="payment-section">
+      <div class="payment-container">
+        <div class="address-form">
+          <div class="calculator-header">
+            <h2><i class="fas fa-credit-card"></i> Payment Method</h2>
+            <p>Select your preferred payment method</p>
+          </div>
+          
+          <div class="payment-methods">
+            <div class="payment-method" onclick="selectPayment('card')">
+              <img src="/Images/DebitCard.avif" alt="Credit Card">
+              <h4>Credit/Debit Card</h4>
+              <p>Pay securely with your card</p>
+            </div>
+            
+            <div class="payment-method" onclick="selectPayment('paypal')">
+              <img src="/Images/Paypal.webp" alt="PayPal">
+              <h4>PayPal</h4>
+              <p>Pay with your PayPal account</p>
+            </div>
+            
+            <div class="payment-method" onclick="selectPayment('cod')">
+              <i class="fas fa-money-bill-wave" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
+
+              <h4>Cash on Delivery</h4>
+              <p>Pay when we deliver your laundry</p>
+            </div>
+          </div>
+          
+          <div class="payment-details" id="card-details">
+            <div class="selection-group">
+              <label><i class="far fa-credit-card"></i> Card Number</label>
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+            </div>
+            
+            <div class="address-fields">
+              <div class="selection-group">
+                <label>Expiry Date</label>
+                <input type="text" id="card-expiry" placeholder="MM/YY">
+              </div>
+              
+              <div class="selection-group">
+                <label>CVV</label>
+                <input type="text" id="card-cvv" placeholder="123">
+              </div>
+            </div>
+            
+            <div class="selection-group">
+              <label><i class="far fa-user"></i> Cardholder Name</label>
+              <input type="text" id="card-name" placeholder="John Doe">
+            </div>
+          </div>
+          
+          <div class="payment-details" id="paypal-details">
+            <p>You will be redirected to PayPal to complete your payment after confirmation.</p>
+            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" style="margin-top: 1rem;">
+          </div>
+          
+          <div class="payment-details" id="cod-details">
+            <p>Please have exact change ready when we deliver your laundry.</p>
+            <p>A 2% service charge will be added for cash payments.</p>
+          </div>
+          
+          <div class="nav-buttons">
+            <button class="nav-btn secondary" onclick="backToAddress()">
+              <i class="fas fa-arrow-left"></i> Back to Address
+            </button>
+            <button class="nav-btn" onclick="confirmBooking()">
+              <i class="fas fa-check-circle"></i> Confirm Booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Section -->
+    <div class="content-section" id="confirmation-section">
+      <div class="confirmation-container">
+        <div class="confirmation-box">
+          <div class="confirmation-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h2>Booking Confirmed!</h2>
+          <p>Your laundry service has been successfully booked. We'll send you a confirmation email shortly.</p>
+          
+          <div class="booking-code">
+            WOSHO-<span id="booking-code">XXXXXX</span>
+          </div>
+          
+          <div class="order-summary">
+            <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+            <div id="confirmation-items"></div>
+            
+            <div class="billing-row">
+              <span>Subtotal:</span>
+              <span class="billing-amount">$<span id="confirm-subtotal">0.00</span></span>
+            </div>
+            <div class="billing-row">
+              <span>Discount:</span>
+              <span class="billing-amount">-$<span id="confirm-discount">0.00</span></span>
+            </div>
+            <div class="billing-row total">
+              <span>Total:</span>
+              <span class="total-amount">$<span id="confirm-total">0.00</span></span>
+            </div>
+            
+            <h3 style="margin-top: 1.5rem;"><i class="fas fa-map-marker-alt"></i> Delivery Address</h3>
+            <p id="confirm-address"></p>
+            <p id="confirm-phone"></p>
+            
+            <h3 style="margin-top: 1.5rem;"><i class="fas fa-credit-card"></i> Payment Method</h3>
+            <p id="confirm-payment"></p>
+          </div>
+          
+          <button class="nav-btn" onclick="window.location.href='/'">
+            <i class="fas fa-home"></i> Back to Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.google.co.in/maps/@28.990991,77.1645248,14z?entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" async defer></script>
+<script src="booking.js"></script>
+  
+</body>
+</html>
