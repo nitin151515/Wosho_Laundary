@@ -1,56 +1,56 @@
 # Wosho_Laundary
 
-Website Link :
+Website Link : https://nitin151515.github.io/Wosho_Laundary/
+
 
 Project Overview
 This is a modern laundry solution website that connects users with local laundry service providers ("dhobiwalas") in their area, similar to the Ola/Uber concept but for laundry services. The website is built using:
 
-HTML for structure
+1. HTML for structure
 
-CSS for styling
+2. CSS for styling
 
-JavaScript for functionality
+3. JavaScript for functionality
 
-API fetching for dynamic data
+4. API fetching for dynamic data
 
 Key Features
-Location-Based Service Matching: Finds nearby laundry providers based on user's location
+. Location-Based Service Matching: Finds nearby laundry providers based on user's location
 
-Service Selection: Allows users to choose from various laundry services
+. Service Selection: Allows users to choose from various laundry services
 
-Real-Time Tracking: Shows status of laundry orders
+. Real-Time Tracking: Shows status of laundry orders
 
-Provider Profiles: Displays information about local dhobiwalas
+. Provider Profiles: Displays information about local dhobiwalas
 
-Rating System: Lets users rate their service experience
+. Rating System: Lets users rate their service experience
 
 Technical Implementation
+
 The project likely includes:
 
 Frontend Components:
 
-User registration/login forms
+. User registration/login forms
 
-Service selection interface
+. Service selection interface
 
-Provider search and display
+. Provider search and display
 
-Order tracking dashboard
+. Order tracking dashboard
 
-API Integration:
+. API Integration:
 
-Location services (like Google Maps API)
+. Location services (like Google Maps API)
 
-Payment gateway (if implemented)
+. Payment gateway (if implemented)
 
-Backend communication for order processing
+. JavaScript Functionality:
 
-JavaScript Functionality:
+. Dynamic content loading
 
-Dynamic content loading
+. Form validation
 
-Form validation
+. Interactive maps
 
-Interactive maps
-
-Real-time updates
+. Real-time updates
